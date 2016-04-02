@@ -14,5 +14,10 @@ setup(
             'htmlmin = lektor_htmlmin:HTMLMinPlugin',
         ]
     },
+    classifiers=[
+        'Environment :: Web Environment',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+    ],
     install_requires=['htmlmin']
 )
