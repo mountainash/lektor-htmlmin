@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import codecs
 
 
 import htmlmin
@@ -9,7 +10,7 @@ from lektor.pluginsystem import Plugin
 class HTMLMinPlugin(Plugin):
     name = u'Lektor HTMLmin'
     description = u'HTML minifier for Lektor. Based on htmlmin.'
-    
+
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
         self.options = {
@@ -21,7 +22,7 @@ class HTMLMinPlugin(Plugin):
 			'keep_pre': False,
             'pre_attr':'pre'
 		}
-    
+
     def find_html_files(self, destination):
         """
         Finds all html files in the given destination.
@@ -33,19 +34,19 @@ class HTMLMinPlugin(Plugin):
                     fullpath = os.path.join(root, f)
                     all_files.append(fullpath)
         return all_files
-        
-        
+
+
     def minify_file(self, target):
         """
         Minifies the target html file.
         """
-        f = open(target, 'r+')
-        result = htmlmin.minify(f.read().decode('utf-8'), **self.options)
+        f = codecs.open(target, 'r+', 'utf-8')
+        result = htmlmin.minify(f.read().decode('latin-1'), **self.options)
         f.seek(0)
         f.write(result)
         f.truncate()
         f.close()
-        
+
 
     def on_after_build_all(self, builder, **extra):
         """
@@ -55,4 +56,3 @@ class HTMLMinPlugin(Plugin):
         files = self.find_html_files(destination)
         for htmlfile in files:
             self.minify_file(htmlfile)
-            
