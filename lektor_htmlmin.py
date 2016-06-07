@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import codecs
-
+import chardet
 
 import htmlmin
 from lektor.pluginsystem import Plugin
-
 
 class HTMLMinPlugin(Plugin):
     name = u'Lektor HTMLmin'
@@ -39,9 +38,25 @@ class HTMLMinPlugin(Plugin):
     def minify_file(self, target):
         """
         Minifies the target html file.
+
+        Handles the original encoding
         """
-        f = codecs.open(target, 'r+', 'utf-8')
-        result = htmlmin.minify(f.read().decode('latin-1'), **self.options)
+
+        decode = True
+        encoding_ = ['utf-8', 'latin-1']
+        enc=chardet.detect(target)
+
+        if enc['encoding'] == "ascii":
+            decode = False
+            encoding_ = ['latin-1', 'utf-8']
+
+        f = codecs.open(target, 'r+', encoding_[0])
+
+        if decode:
+            result = htmlmin.minify(f.read().decode(encoding_[1]), **self.options)
+        else:
+            result = htmlmin.minify(f.read(), **self.options)
+
         f.seek(0)
         f.write(result)
         f.truncate()
