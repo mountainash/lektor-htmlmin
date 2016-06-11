@@ -18,7 +18,7 @@ lektor-htmlmin = 0.1.1
 ```
 
 ## Usage
-lektor-htmlmin will automatically minify .html files in the build destination 
+When the build command is run, lektor-htmlmin will automatically minify .html files in the build destination 
 folder, after lektor has finished building them. 
 The original files will be overwritten by their minified counterpart.
 
