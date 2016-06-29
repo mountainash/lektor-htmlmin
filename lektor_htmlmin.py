@@ -21,7 +21,8 @@ class HTMLMinPlugin(Plugin):
 			'reduce_boolean_attributes': False,
 			'remove_optional_attribute_quotes': False,
 			'keep_pre': False,
-            'pre_attr':'pre'
+            'pre_attr':'pre',
+            'remove_comments': True
 		}
 
     def find_html_files(self, destination):
