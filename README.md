@@ -1,6 +1,6 @@
 # lektor-htmlmin
 
-HTML minifier for Lektor that automatically minifies generated .html files. This plugin is based on htmlmin.
+HTML minifier for Lektor that automatically minifies generated .html files. This plugin is based on [htmlmin](https://github.com/mankyd/htmlmin).
 
 ## Installation
 
