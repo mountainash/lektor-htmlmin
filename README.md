@@ -14,15 +14,14 @@ Or modifying your lektorproject file, adding the plugin to the packages section:
 
 ```
 [packages]
-lektor-htmlmin = 0.1.1
+lektor-htmlmin = 0.2
 ```
 
 ## Usage
-When the build command is run, lektor-htmlmin will automatically minify .html files in the build destination 
-folder, after lektor has finished building them. 
+When the build command is run, lektor-htmlmin will automatically minify .html files in the build destination
+folder, after lektor has finished building them.
 The original files will be overwritten by their minified counterpart.
 
 ```
 lektor build -O my_build_folder
 ```
-
