@@ -18,10 +18,13 @@ lektor-htmlmin = 0.2
 ```
 
 ## Usage
-When the build command is run, lektor-htmlmin will automatically minify .html files in the build destination
-folder, after lektor has finished building them.
-The original files will be overwritten by their minified counterpart.
+
+To enable minification, pass the `htmlmin` flag when starting the development server or when running a build:
 
 ```
-lektor build -O my_build_folder
+lektor build -O my_build_folder -f htmlmin
 ```
+
+When the flag is present, htmlmin will overwrite all HTML files in the output directory with their minified counterparts.
+
+*Note:* The htmlmin plugin currently minfies every file in the project after a build. Not just files that have been changed. This should have no ill effects, but might increase build times if there are many files to minify.
