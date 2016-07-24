@@ -22,13 +22,12 @@ class HTMLMinPlugin(Plugin):
             'reduce_boolean_attributes': False,
             'remove_optional_attribute_quotes': False,
             'keep_pre': False,
-            'pre_attr':'pre',
+            'pre_attr': 'pre',
             'remove_comments': True
         }
 
     def is_enabled(self, build_flags):
         return bool(build_flags.get('htmlmin'))
-
 
     def find_html_files(self, destination):
         """
@@ -38,7 +37,6 @@ class HTMLMinPlugin(Plugin):
             for f in files:
                 if f.endswith('.html'):
                     yield os.path.join(root, f)
-
 
     def minify_file(self, target):
         """
@@ -50,7 +48,6 @@ class HTMLMinPlugin(Plugin):
             f.seek(0)
             f.write(result)
             f.truncate()
-
 
     def on_after_build_all(self, builder, **extra):
         """
