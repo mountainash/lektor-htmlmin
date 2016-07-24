@@ -25,6 +25,10 @@ class HTMLMinPlugin(Plugin):
             'remove_comments': True
         }
 
+    def is_enabled(self, build_flags):
+        return bool(build_flags.get('htmlmin'))
+
+
     def find_html_files(self, destination):
         """
         Finds all html files in the given destination.
@@ -55,6 +59,9 @@ class HTMLMinPlugin(Plugin):
         """
         after-build-all lektor event
         """
+        if not self.is_enabled(builder.build_flags):
+            return
+
         destination = builder.destination_path
         files = self.find_html_files(destination)
         for htmlfile in files:
