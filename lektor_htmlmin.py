@@ -6,6 +6,7 @@ import chardet
 
 import htmlmin
 from lektor.pluginsystem import Plugin
+from lektor.reporter import reporter
 
 
 class HTMLMinPlugin(Plugin):
@@ -62,7 +63,9 @@ class HTMLMinPlugin(Plugin):
         if not self.is_enabled(builder.build_flags):
             return
 
+        reporter.report_generic('Starting HTML minification')
         destination = builder.destination_path
         files = self.find_html_files(destination)
         for htmlfile in files:
             self.minify_file(htmlfile)
+        reporter.report_generic('HTML minification finished')
