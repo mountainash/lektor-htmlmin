@@ -34,13 +34,10 @@ class HTMLMinPlugin(Plugin):
         """
         Finds all html files in the given destination.
         """
-        all_files = []
         for root, dirs, files in os.walk(destination):
             for f in files:
-                if f.split('.')[-1] == 'html':
-                    fullpath = os.path.join(root, f)
-                    all_files.append(fullpath)
-        return all_files
+                if f.endswith('.html'):
+                    yield os.path.join(root, f)
 
 
     def minify_file(self, target):
@@ -48,12 +45,11 @@ class HTMLMinPlugin(Plugin):
         Minifies the target html file.
         """
         enc = chardet.detect(open(target).read())['encoding']
-        f = codecs.open(target, 'r+', enc)
-        result = htmlmin.minify(f.read(), **self.options)
-        f.seek(0)
-        f.write(result)
-        f.truncate()
-        f.close()
+        with codecs.open(target, 'r+', enc) as f:
+            result = htmlmin.minify(f.read(), **self.options)
+            f.seek(0)
+            f.write(result)
+            f.truncate()
 
 
     def on_after_build_all(self, builder, **extra):
@@ -64,8 +60,6 @@ class HTMLMinPlugin(Plugin):
             return
 
         reporter.report_generic('Starting HTML minification')
-        destination = builder.destination_path
-        files = self.find_html_files(destination)
-        for htmlfile in files:
+        for htmlfile in self.find_html_files(builder.destination_path):
             self.minify_file(htmlfile)
         reporter.report_generic('HTML minification finished')
