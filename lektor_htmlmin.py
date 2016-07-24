@@ -15,15 +15,15 @@ class HTMLMinPlugin(Plugin):
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
         self.options = {
-			'remove_empty_space': True,
-			'remove_all_empty_space': True,
-			'reduce_empty_attributes': True,
-			'reduce_boolean_attributes': False,
-			'remove_optional_attribute_quotes': False,
-			'keep_pre': False,
+            'remove_empty_space': True,
+            'remove_all_empty_space': True,
+            'reduce_empty_attributes': True,
+            'reduce_boolean_attributes': False,
+            'remove_optional_attribute_quotes': False,
+            'keep_pre': False,
             'pre_attr':'pre',
             'remove_comments': True
-		}
+        }
 
     def find_html_files(self, destination):
         """
