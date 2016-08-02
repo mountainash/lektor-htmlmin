@@ -14,7 +14,7 @@ Or modifying your lektorproject file, adding the plugin to the packages section:
 
 ```
 [packages]
-lektor-htmlmin = 0.2
+lektor-htmlmin = 0.3
 ```
 
 ## Usage
