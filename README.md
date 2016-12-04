@@ -27,4 +27,6 @@ lektor build -O my_build_folder -f htmlmin
 
 When the flag is present, htmlmin will overwrite all HTML files in the output directory with their minified counterparts.
 
-*Note:* The htmlmin plugin currently minfies every file in the project after a build. Not just files that have been changed. This should have no ill effects, but might increase build times if there are many files to minify.
+*Note:* The htmlmin plugin currently minifies every file in the project after a build.
+Not just files that have been changed. This should have no ill effects, but
+might increase build times if there are many files to minify.
