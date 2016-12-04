@@ -18,7 +18,7 @@ You can install the plugin with Lektor's installer::
 Or by hand, adding the plugin to the packages section in your lektorproject file::
 
     [packages]
-    lektor-htmlmin = 0.3
+    lektor-htmlmin = 1.0
 
 
 Usage
