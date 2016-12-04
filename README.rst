@@ -1,5 +1,6 @@
 lektor-htmlmin
 --------------
+|Pypi|
 
 HTML minifier for Lektor that automatically minifies generated .html files.
 
@@ -35,3 +36,7 @@ directory with their minified counterparts.
 *Note:* The htmlmin plugin currently minifies every file in the project after a build.
 Not just files that have been changed. This should have no ill effects, but
 might increase build times if there are many files to minify.
+
+
+.. |Pypi| image:: https://img.shields.io/pypi/v/lektor-htmlmin.svg?maxAge=3600&style=flat-square
+   :target: https://pypi.python.org/pypi/efesto
