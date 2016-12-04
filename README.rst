@@ -30,7 +30,7 @@ server or when running a build::
 
 
 When the flag is present, htmlmin will overwrite all HTML files in the output
- directory with their minified counterparts.
+directory with their minified counterparts.
 
 *Note:* The htmlmin plugin currently minifies every file in the project after a build.
 Not just files that have been changed. This should have no ill effects, but
