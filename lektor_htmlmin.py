@@ -53,7 +53,13 @@ class HTMLMinPlugin(Plugin):
         """
         after-build-all lektor event
         """
-        if not self.is_enabled(builder.build_flags):
+        # NOTE(vesuvium): compatibility for lektor 2.X and 3.X
+        try:
+            is_enabled = self.is_enabled(builder.build_flags)
+        except AttributeError:
+            is_enabled = self.is_enabled(builder.extra_flags)
+
+        if not is_enabled:
             return
 
         reporter.report_generic('Starting HTML minification')
