@@ -3,7 +3,7 @@ lektor-htmlmin
 
 HTML minifier for Lektor that automatically minifies generated .html files.
 
-Uses [htmlmin](https://github.com/mankyd/htmlmin) and looks for .html files,
+Uses `htmlmin <https://github.com/mankyd/htmlmin>`_ and looks for .html files,
 minifying them as part of the build process.
 
 Installing
