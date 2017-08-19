@@ -2,6 +2,7 @@
 import os
 import codecs
 import chardet
+import sys
 
 
 import htmlmin
@@ -42,7 +43,8 @@ class HTMLMinPlugin(Plugin):
         """
         Minifies the target html file.
         """
-        enc = chardet.detect(open(target).read())['encoding']
+        html = open(target, 'rb').read()
+        enc = chardet.detect(html)['encoding']
         with codecs.open(target, 'r+', enc) as f:
             result = htmlmin.minify(f.read(), **self.options)
             f.seek(0)
