@@ -39,4 +39,4 @@ might increase build times if there are many files to minify.
 
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/lektor-htmlmin.svg?maxAge=3600&style=flat-square
-   :target: https://pypi.python.org/pypi/efesto
+   :target: https://pypi.org/project/lektor-htmlmin/
